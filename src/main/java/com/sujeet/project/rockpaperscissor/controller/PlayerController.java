@@ -3,9 +3,12 @@ package com.sujeet.project.rockpaperscissor.controller;
 import com.sujeet.project.rockpaperscissor.entity.GameEntity;
 import com.sujeet.project.rockpaperscissor.model.GameHistoryModel;
 import com.sujeet.project.rockpaperscissor.model.LoginRequest;
+import com.sujeet.project.rockpaperscissor.model.Player;
 import com.sujeet.project.rockpaperscissor.model.RegisterPlayerRequest;
 import com.sujeet.project.rockpaperscissor.repository.GameRepository;
+import com.sujeet.project.rockpaperscissor.service.HistoryService;
 import com.sujeet.project.rockpaperscissor.service.HistoryServiceImpl;
+import com.sujeet.project.rockpaperscissor.service.PlayerService;
 import com.sujeet.project.rockpaperscissor.service.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +25,10 @@ import java.util.List;
 public class PlayerController {
 
     @Autowired
-    private PlayerServiceImpl playerService;
+    private PlayerService playerService;
 
     @Autowired
-    private HistoryServiceImpl historyService;
+    private HistoryService historyService;
 
     @Autowired
     private GameRepository gameRepository;
@@ -59,6 +62,11 @@ public class PlayerController {
         }
         historyService.deleteHistory(playerName);
         return ResponseEntity.ok("Complete player history deleted successfully.");
+    }
+
+    @GetMapping("/list")
+    public List<Player> getAllPlayer() {
+        return playerService.getAllPlayer();
     }
 
 

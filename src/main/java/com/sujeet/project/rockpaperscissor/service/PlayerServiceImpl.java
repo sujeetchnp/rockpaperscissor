@@ -13,7 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class PlayerServiceImpl implements PlayerService{
@@ -73,5 +75,18 @@ public class PlayerServiceImpl implements PlayerService{
         }
         playerRepository.updateLoggedInDate(playerName,new Date());
         return jwtTokenUtil.generateToken(convertToPlayerModel(playerEntity));
+    }
+
+    @Override
+    public List<Player> getAllPlayer(){
+       List<PlayerEntity> playerEntityList = playerRepository.findAll();
+
+       List<Player> playerList = new ArrayList<>();
+
+       for(PlayerEntity entity : playerEntityList){
+           Player model = convertToPlayerModel(entity);
+           playerList.add(model);
+       }
+       return playerList;
     }
 }

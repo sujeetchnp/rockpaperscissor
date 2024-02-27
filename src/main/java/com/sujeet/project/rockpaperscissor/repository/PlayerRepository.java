@@ -19,4 +19,5 @@ public interface PlayerRepository extends JpaRepository<PlayerEntity, String> {
     @Query("UPDATE PlayerEntity set lastLoggedInDate = :dateParam WHERE playerName = :playerNameParam")
     void updateLoggedInDate(@Param("playerNameParam") String playerName, @Param("dateParam") Date lastLoggedInDate);
 
+
 }

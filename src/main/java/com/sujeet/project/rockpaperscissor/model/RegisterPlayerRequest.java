@@ -1,5 +1,8 @@
 package com.sujeet.project.rockpaperscissor.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class RegisterPlayerRequest {
@@ -8,6 +11,15 @@ public class RegisterPlayerRequest {
     private String email;
     private String city;
     private String country;
+
+
+//    public RegisterPlayerRequest(String playerName, String password, String email, String city, String country) {
+//        this.playerName = playerName;
+//        this.password = password;
+//        this.email = email;
+//        this.city = city;
+//        this.country = country;
+//    }
 
     public String getPlayerName() {
         return playerName;

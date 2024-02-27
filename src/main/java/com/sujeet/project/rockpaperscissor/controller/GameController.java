@@ -5,6 +5,7 @@ import com.sujeet.project.rockpaperscissor.repository.GameRepository;
 import com.sujeet.project.rockpaperscissor.repository.GameRoundRepository;
 import com.sujeet.project.rockpaperscissor.service.HistoryServiceImpl;
 import com.sujeet.project.rockpaperscissor.service.RockPaperScissorImpl;
+import com.sujeet.project.rockpaperscissor.service.RockPaperScissorService;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
@@ -21,7 +22,7 @@ import java.util.List;
 public class GameController {
 
     @Autowired
-    private RockPaperScissorImpl rockPaperScissor;
+    private RockPaperScissorService rockPaperScissor;
 
 
     @Secured("ROLE_PLAYER")
